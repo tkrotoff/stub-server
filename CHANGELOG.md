@@ -1,3 +1,11 @@
+## 0.8.0 (2022/05/03)
+
+This is a fork of @pmu-tech/stub-server
+
+- Bind to 0.0.0.0 address
+- Improve documentation
+- Update npm packages
+
 ## 0.7.0 (2022/01/21)
 
 - Breaking change: CLI config path is now an argument instead of an option
