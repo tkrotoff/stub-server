@@ -1,8 +1,8 @@
-# @pmu-tech/stub-server
+# @tkrotoff/stub-server
 
-[![npm version](https://badge.fury.io/js/%40pmu-tech%2Fstub-server.svg)](https://www.npmjs.com/package/@pmu-tech/stub-server)
-[![Node.js CI](https://github.com/pmu-tech/stub-server/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/pmu-tech/stub-server/actions)
-[![Bundle size](https://badgen.net/bundlephobia/minzip/@pmu-tech/stub-server)](https://bundlephobia.com/result?p=@pmu-tech/stub-server)
+[![npm version](https://badge.fury.io/js/%40tkrotoff%2Fstub-server.svg)](https://www.npmjs.com/package/@tkrotoff/stub-server)
+[![Node.js CI](https://github.com/tkrotoff/stub-server/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/tkrotoff/stub-server/actions)
+[![Bundle size](https://badgen.net/bundlephobia/minzip/@tkrotoff/stub-server)](https://bundlephobia.com/result?p=@tkrotoff/stub-server)
 [![Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Airbnb Code Style](https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
 
@@ -20,7 +20,7 @@ For each route, decide what will happen: a JSON stub, a piece of JS or redirect 
 
 ## Usage
 
-`npm install --save-dev @pmu-tech/stub-server`
+`npm install --save-dev @tkrotoff/stub-server`
 
 ### Proposed file organization
 
@@ -44,9 +44,9 @@ webpack.config.ts
 
 ```TypeScript
 import path from 'path';
-import { StubServerConfig } from '@pmu-tech/stub-server';
+import { StubServerConfig } from '@tkrotoff/stub-server';
 
-const prod = 'https://pmu.fr';
+const prod = 'https://myapp.com';
 
 const stubsPath = path.resolve(__dirname, 'routes');
 
@@ -64,7 +64,7 @@ const config: StubServerConfig = {
       GET: `${stubsPath}/my_api7_GET_200_OK.json`,
       POST: {
         delay: { min: 0, max: 0 },
-        headers: { origin: 'https://pmu.fr' },
+        headers: { origin: 'https://myapp.com' },
         response: `${stubsPath}/my_api7_POST_200_OK.json`
       }
     },
@@ -74,7 +74,7 @@ const config: StubServerConfig = {
   }
 };
 
-const rootApiPath = 'https://pmu.fr/client/:clientApi';
+const rootApiPath = 'https://myapp.com/client/:clientApi';
 config.routes[`${rootApiPath}/my/api7`] = { GET: `${stubsPath}/my_api7_GET_200_OK.json` };
 
 export default config; // Or "exports.default = config"
@@ -87,7 +87,7 @@ Note: `stubs/config.ts` written in TypeScript instead of JavaScript requires [ts
 Configuration with [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
 
 ```TypeScript
-import { stubServer } from '@pmu-tech/stub-server';
+import { stubServer } from '@tkrotoff/stub-server';
 
 // ...
 
@@ -173,7 +173,7 @@ Options:
 ```JavaScript
 // stubServer.js
 
-const { stubServer } = require('@pmu-tech/stub-server');
+const { stubServer } = require('@tkrotoff/stub-server');
 const cors = require('cors');
 const express = require('express');
 const next = require('next');

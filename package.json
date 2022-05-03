@@ -1,9 +1,9 @@
 {
-  "name": "@pmu-tech/stub-server",
+  "name": "@tkrotoff/stub-server",
   "version": "0.7.0",
   "description": "Stub server for REST APIs",
-  "repository": "github:pmu-tech/stub-server",
-  "author": "PMU",
+  "repository": "github:tkrotoff/stub-server",
+  "author": "Tanguy Krotoff",
   "license": "MIT",
   "keywords": [
     "stub-server",
