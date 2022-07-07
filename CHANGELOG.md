@@ -1,3 +1,8 @@
+## 0.9.0 (2022/07/08)
+
+- Just ship CommonJS
+- Update npm packages
+
 ## 0.8.0 (2022/05/03)
 
 This is a fork of @pmu-tech/stub-server
