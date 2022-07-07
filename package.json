@@ -1,6 +1,6 @@
 {
   "name": "@tkrotoff/stub-server",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Stub server for REST APIs",
   "repository": "github:tkrotoff/stub-server",
   "author": "Tanguy Krotoff",
