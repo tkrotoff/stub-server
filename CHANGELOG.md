@@ -1,3 +1,7 @@
+## 0.10.0 (2022/07/08)
+
+- Ship again ESM modules, https://github.com/rollup/rollup/wiki/pkg.module
+
 ## 0.9.0 (2022/07/08)
 
 - Just ship CommonJS
