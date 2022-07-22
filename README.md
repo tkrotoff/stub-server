@@ -64,7 +64,7 @@ const config: StubServerConfig = {
       GET: `${stubsPath}/my_api7_GET_200_OK.json`,
       POST: {
         delay: { min: 0, max: 0 },
-        headers: { origin: 'https://myapp.com' },
+        headers: { origin: prod },
         response: `${stubsPath}/my_api7_POST_200_OK.json`
       }
     },
