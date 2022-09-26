@@ -1,4 +1,4 @@
-## 0.11.0 (2022/XX/XX)
+## 0.11.0 (2022/09/26)
 
 - Breaking change: remove `headers` option: use a function with [req](http://expressjs.com/en/4x/api.html#req) as parameter instead
 - Document how to configure stub-server both for stubs and as a proxy
