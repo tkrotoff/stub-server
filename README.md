@@ -98,13 +98,20 @@ import { stubServer } from '@tkrotoff/stub-server';
 ...
 
   devServer: {
-    // webpack 5
-    onBeforeSetupMiddleware: ({ app }) => {
+    // With webpack-dev-server >= v4.7.0
+    setupMiddlewares: (middlewares, devServer) => {
       const configPath = path.resolve(__dirname, 'stubs/config');
-      stubServer(configPath, app);
+      stubServer(configPath, devServer.app!);
+      return middlewares;
     }
 
-    // webpack 4
+    // With webpack-dev-server from v4.0.0 to v4.6.0
+    onBeforeSetupMiddleware: (devServer) => {
+      const configPath = path.resolve(__dirname, 'stubs/config');
+      stubServer(configPath, devServer.app!);
+    }
+
+    // With webpack-dev-server < v4.0.0
     before: app => {
       const configPath = path.resolve(__dirname, 'stubs/config');
       stubServer(configPath, app);
