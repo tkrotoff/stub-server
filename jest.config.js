@@ -4,7 +4,7 @@
 const { defaults } = require('jest-config');
 /* eslint-enable @typescript-eslint/no-var-requires */
 
-/** @type import('@jest/types').Config.InitialOptions */
+/** @type {import('jest').Config} */
 const config = {
   setupFiles: ['./jest.setup.ts'],
   coveragePathIgnorePatterns: [...defaults.coveragePathIgnorePatterns, './jest.setup.ts'],
