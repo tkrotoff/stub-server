@@ -22,6 +22,8 @@ For each route, decide what will happen: a JSON stub, a piece of JS or redirect 
 
 `npm install --save-dev @tkrotoff/stub-server`
 
+Example: https://github.com/tkrotoff/MarvelHeroes
+
 ### Proposed file organization
 
 ```
