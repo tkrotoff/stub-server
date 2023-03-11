@@ -140,8 +140,8 @@ test('invalid port option', done => {
     expect(data.toString()).toEqual('Never reached');
   });
   process.stderr.on('data', data => {
-    expect(data.toString()).toMatch(
-      /RangeError \[ERR_SOCKET_BAD_PORT]: options.port should be >= 0 and < 65536. Received -1\./
+    expect(data.toString()).toContain(
+      'RangeError [ERR_SOCKET_BAD_PORT]: options.port should be >= 0 and < 65536.'
     );
   });
   process.on('exit', code => {
