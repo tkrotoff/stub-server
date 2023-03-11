@@ -159,7 +159,7 @@ async function processStubRequest(
       const filename = stubOrUrl;
 
       const match = /_(\d+)_[A-Za-z]+/.exec(filename);
-      const httpStatus = match === null ? 200 : Number(match![1]); // 200: default HTTP status if none specified
+      const httpStatus = match === null ? undefined : Number(match[1]);
 
       if (httpStatus === 204 /* No Content */) {
         res.status(httpStatus).end();
@@ -184,6 +184,11 @@ async function processStubRequest(
         }
 
         if (fileContent !== undefined) {
+          if (httpStatus === undefined) {
+            throw new Error(
+              `The stub '${filename}' is not an Express function and therefore must contain the HTTP status code in its name, ex: my_api_GET_200_OK.json`
+            );
+          }
           res.status(httpStatus).send(fileContent as object | Buffer);
         }
       }

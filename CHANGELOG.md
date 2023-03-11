@@ -1,3 +1,7 @@
+## 0.13.0 (2023/03/11)
+
+- Breaking change: throw if the stub is not an Express function and does not contain the HTTP status code in its name
+
 ## 0.12.0 (2023/03/11)
 
 - Update npm packages

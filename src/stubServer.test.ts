@@ -17,9 +17,18 @@ afterEach(() => consoleSpy.mockRestore());
 
 describe('files', () => {
   test('file without HTTP status', async () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+
     const res = await request(app).get('/get/json/noHttpStatus');
-    expect(res.status).toEqual(200);
-    expect(res.body).toEqual({ stub: 'GET_noHttpStatus.json' });
+    expect(res.status).toEqual(500);
+    expect(res.body).toEqual({});
+    expect(res.text).toContain('<title>Error</title>');
+    expect(res.text).toMatch(
+      /<pre>Error: The stub &#39;.*\/GET_noHttpStatus\.json&#39; is not an Express function and therefore must contain the HTTP status code in its name, ex: my_api_GET_200_OK\.json.*<\/pre>/
+    );
+
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+    consoleErrorSpy.mockRestore();
   });
 
   test('json file does not exist', async () => {
