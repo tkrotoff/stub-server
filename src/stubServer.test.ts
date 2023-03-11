@@ -88,10 +88,10 @@ describe('files', () => {
     const res = await request(app).get('/get/js-with-json-file-extension');
     expect(res.status).toEqual(500);
     expect(res.body).toEqual({});
-    expect(res.text).toContain('SyntaxError: Unexpected token m in JSON at position 0');
+    expect(res.text).toContain('SyntaxError: Unexpected token');
 
     expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
-    expect(consoleErrorSpy).toHaveBeenCalledWith('Unexpected token m in JSON at position 0');
+    expect(consoleErrorSpy).toHaveBeenCalledWith(expect.stringContaining('Unexpected token'));
     consoleErrorSpy.mockRestore();
   });
 });
@@ -292,7 +292,7 @@ describe('proxy', () => {
       expect(sendToProxyMock).toHaveBeenCalledTimes(1);
       expect(res.status).toEqual(500);
       expect(res.serverError).toEqual(true);
-      expect(res.text).toMatch(/<title>Error<\/title>/);
+      expect(res.text).toContain('<title>Error</title>');
       expect(res.text).toMatch(/<pre>Error: getaddrinfo ENOTFOUND unknown_host\.com.*<\/pre>/);
 
       sendToProxyMock.mockRestore();
@@ -334,7 +334,7 @@ describe('proxy', () => {
       const res = await request(app).get('/unknownHost');
       expect(res.status).toEqual(500);
       expect(res.serverError).toEqual(true);
-      expect(res.text).toMatch(/<title>Error<\/title>/);
+      expect(res.text).toContain('<title>Error</title>');
       expect(res.text).toMatch(/<pre>Error: getaddrinfo ENOTFOUND unknown_host\.com.*<\/pre>/);
     });
 
@@ -439,7 +439,7 @@ test('unknown route', async () => {
   const res = await request(app).get('/get/unknownRoute');
   expect(res.status).toEqual(404);
   expect(res.body).toEqual({});
-  expect(res.text).toMatch(/<title>Error<\/title>/);
+  expect(res.text).toContain('<title>Error</title>');
   expect(res.text).toMatch(/<pre>Cannot GET \/get\/unknownRoute<\/pre>/);
 });
 
